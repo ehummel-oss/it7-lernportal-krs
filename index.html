@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KRS Rebdorf · IT Lernportal</title>
+<style>
+*{box-sizing:border-box}
+:root{--b:#17384b;--blue:#2979a7;--light:#eef6fb;--wine:#8b2538;--green:#3b9270;--muted:#657a86}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(145deg,#eef6fb,#f7f2f3);color:var(--b)}
+header{background:#fff;border-bottom:5px solid var(--wine);padding:20px}
+.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.brand h1{margin:0;font-size:30px} .brand p{margin:5px 0 0;color:var(--muted)}
+.logo{font-weight:800;font-size:20px;color:var(--wine);border:2px solid var(--wine);padding:10px 14px;border-radius:14px}
+main{max-width:1050px;margin:28px auto;padding:0 18px 50px}
+.hero{background:#17384b;color:white;border-radius:24px;padding:26px;box-shadow:0 10px 30px #17384b22}
+.hero h2{font-size:32px;margin:0 0 8px} .hero p{margin:0;color:#dceaf1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:17px;margin-top:22px}
+.tile{background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 25px #17384b16;border-top:5px solid var(--blue);cursor:pointer;transition:.18s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 12px 30px #17384b28}
+.tile.disabled{cursor:default;opacity:.65;border-top-color:#aeb9bf}
+.icon{font-size:35px} .tile h3{margin:9px 0 6px;font-size:20px} .tile p{color:var(--muted);line-height:1.4}
+.tag{display:inline-block;padding:5px 9px;border-radius:99px;background:#e8f4fa;font-size:12px;font-weight:bold}
+.screen{display:none} .screen.active{display:block}
+.back{border:0;background:white;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer;margin-bottom:14px}
+.card{background:#fff;border-radius:22px;padding:24px;box-shadow:0 8px 30px #17384b18}
+.progress{height:12px;background:#dce7ed;border-radius:10px;overflow:hidden} #bar{height:100%;background:var(--blue);transition:.3s}
+.opt{display:block;width:100%;text-align:left;border:2px solid #c9dbe5;background:#fff;border-radius:14px;padding:14px;margin:10px 0;font:inherit;cursor:pointer}
+.correct{border-color:#4aa77b!important;background:#e5f6ed!important} .wrong{border-color:#d76b6b!important;background:#fdeaea!important}
+#feedback{min-height:48px;padding:10px 2px;font-weight:bold} #next{display:none;border:0;border-radius:12px;padding:12px 18px;background:#17384b;color:#fff;font-weight:bold;cursor:pointer}
+.note{font-size:13px;color:var(--muted)} footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="brand"><h1>💻 IT Lernportal</h1><p>Knabenrealschule Rebdorf · Üben, testen, sicher werden.</p></div><div class="logo">KRS REBDORF</div></div></header>
+
+<main>
+<section id="home" class="screen active">
+ <div class="hero"><h2>Willkommen im IT-Training 👋</h2><p>Wähle ein Thema und starte deine Übung. Das Portal kann später einfach um weitere Unterrichtsthemen ergänzt werden.</p></div>
+ <div class="grid">
+   <div class="tile" onclick="show('business')"><div class="icon">📄</div><span class="tag">aktuelle Themen</span><h3>Geschäftsbrief</h3><p>Geschäftsbriefe, Informationsblock, DIN-Regeln und unsere PIXELWERK-Korrespondenz.</p></div>
+   <div class="tile disabled"><div class="icon">📊</div><span class="tag">wird ergänzt</span><h3>Excel</h3><p>Hier sammeln wir später alle Übungen zu Tabellenkalkulation und Excel.</p></div>
+   <div class="tile disabled"><div class="icon">📽️</div><span class="tag">wird ergänzt</span><h3>PowerPoint</h3><p>Hier kommen später Übungen rund um Präsentationen und Gestaltung hinein.</p></div>
+   <div class="tile disabled"><div class="icon">⌨️</div><span class="tag">wird ergänzt</span><h3>Tastschreiben</h3><p>Hier sammeln wir Übungen zum 10-Finger-Schreiben und zur Schreibsicherheit.</p></div>
+ </div>
+</section>
+
+<section id="business" class="screen">
+ <button class="back" onclick="home()">← Zur Hauptübersicht</button>
+ <div class="hero"><h2>📄 Geschäftsbrief</h2><p>Wähle das Thema aus, das du üben möchtest.</p></div>
+ <div class="grid">
+   <div class="tile" onclick="startInfo()"><div class="icon">🕵️</div><span class="tag">20 Aufgaben</span><h3>Informationsblock</h3><p>Ihr Zeichen, Ihre Nachricht vom, unser Zeichen, unsere Nachricht vom und Datum.</p></div>
+   <div class="tile" onclick="startPixel()"><div class="icon">🚀</div><span class="tag">10 Aufgaben</span><h3>PIXELWERK × KRS</h3><p>Bezugszeichen und Informationsblock anhand unserer aktuellen Geschäftskorrespondenz.</p></div>
+   <div class="tile" onclick="startDIN()"><div class="icon">📐</div><span class="tag">10 Aufgaben</span><h3>DIN-Regeln & Aufbau</h3><p>Betreff, Anrede, Leerzeilen, Abstände und Aufbau des Geschäftsbriefs.</p></div>
+   <div class="tile disabled"><div class="icon">✉️</div><span class="tag">wird ergänzt</span><h3>Geschäftskorrespondenz</h3><p>Hier können später komplette Brief-Fälle mit KRS und PIXELWERK hinzukommen.</p></div>
+ </div>
+</section>
+
+<section id="quiz" class="screen">
+ <button class="back" onclick="show('business')">← Zurück zu Geschäftsbrief</button>
+ <div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<h2 id="title" style="margin-bottom:8px"></h2>
+<button class="back" onclick="leaveQuiz()">↩ Andere Übung wählen</button>
+</div><div class="progress"><div id="bar"></div></div><div id="counter" class="note" style="margin-top:8px"></div>
+  <div id="qbox"></div>
+ </div>
+</section>
+</main>
+<footer>KRS Rebdorf · IT Lernportal · Unterrichtsmaterial</footer>
+
+<script>
+const info=[{"q": "Was bedeutet „Ihre Nachricht vom“?", "opts": ["Datum des Schreibens, auf das ich antworte", "Datum meines aktuellen Schreibens", "Datum eines Telefonats"], "a": 0, "e": "Hier steht das Datum der Nachricht des Empfängers, auf die geantwortet wird."}, {"q": "Was bedeutet „Unsere Nachricht vom“?", "opts": ["Datum einer früheren eigenen Nachricht", "Immer das heutige Datum", "Datum des Empfängers"], "a": 0, "e": "Gemeint ist eine frühere eigene Nachricht, auf die Bezug genommen wird."}, {"q": "Bei einer allerersten Nachricht steht bei „Ihr Zeichen“ …", "opts": ["das eigene Zeichen", "nichts", "das Datum"], "a": 1, "e": "Es liegt noch kein vorausgehendes Schreiben des Empfängers vor."}, {"q": "Wer liefert das „Unsere Zeichen“?", "opts": ["Der Absender des aktuellen Schreibens", "Der Empfänger", "Immer die erste Firma"], "a": 0, "e": "„Unsere Zeichen“ gehört zum aktuellen Absender."}, {"q": "Frau Berger schreibt am 12.06. erstmals an BüroStar. „Ihr Zeichen“?", "opts": ["be-ke", "12.06.20XX", "bleibt leer"], "a": 2, "e": "Es gibt noch kein vorausgehendes Schreiben von BüroStar."}, {"q": "Berger diktiert Kern. Welches eigene Zeichen passt?", "opts": ["be-ke", "ke-be", "wa-ro"], "a": 0, "e": "Berger/Kern → be-ke."}, {"q": "Wagner antwortet am 15.06. auf Bergers Brief vom 12.06. „Ihre Nachricht vom“?", "opts": ["15.06.20XX", "12.06.20XX", "leer"], "a": 1, "e": "Er antwortet auf Bergers Brief vom 12.06."}, {"q": "Bergers vorheriges Zeichen war be-ke. Was steht in Wagners Antwort bei „Ihr Zeichen“?", "opts": ["wa-ro", "be-ke", "leer"], "a": 1, "e": "Das Zeichen des vorherigen Absenders wird zu „Ihr Zeichen“."}, {"q": "Wagner diktiert Roth. „Unsere Zeichen“?", "opts": ["be-ke", "wa-ro", "ro-wa"], "a": 1, "e": "Wagner/Roth → wa-ro."}, {"q": "Was steht im Feld „Datum“?", "opts": ["Datum des aktuellen Schreibens", "Datum des ersten Briefs", "Datum des Empfängers"], "a": 0, "e": "Hier steht das Datum des aktuellen Geschäftsbriefs."}, {"q": "Berger antwortet am 18.06. auf Wagners Brief. „Ihr Zeichen“?", "opts": ["be-ke", "wa-ro", "18.06"], "a": 1, "e": "Wagners Zeichen wa-ro wird zu „Ihr Zeichen“."}, {"q": "Bei derselben Rückantwort: „Ihre Nachricht vom“?", "opts": ["12.06.20XX", "15.06.20XX", "18.06.20XX"], "a": 1, "e": "Sie antwortet auf Wagners Schreiben vom 15.06."}, {"q": "Bei Bergers Rückantwort: „Unsere Zeichen“?", "opts": ["be-ke", "wa-ro", "leer"], "a": 0, "e": "Berger/Kern → be-ke."}, {"q": "Berger bezieht sich zusätzlich auf ihren ersten Brief vom 12.06. „Unsere Nachricht vom“?", "opts": ["12.06.20XX", "15.06.20XX", "18.06.20XX"], "a": 0, "e": "Das ist ihre frühere eigene Nachricht."}, {"q": "Welche Angabe gehört NICHT in den Informationsblock der Vorlage?", "opts": ["Telefon", "E-Mail", "Privatadresse", "Telefax"], "a": 2, "e": "Eine Privatadresse ist dort nicht vorgesehen."}, {"q": "Du hast der Firma vorher noch nie geschrieben. „Unsere Nachricht vom“?", "opts": ["bleibt leer", "heutiges Datum", "Bestelldatum"], "a": 0, "e": "Ohne frühere eigene Nachricht bleibt das Feld leer."}, {"q": "Das Zeichen des vorherigen Absenders kommt im Antwortbrief in …", "opts": ["Unsere Zeichen", "Ihr Zeichen", "Datum"], "a": 1, "e": "Das fremde Zeichen wird als „Ihr Zeichen“ geführt."}, {"q": "Das Datum des vorherigen fremden Schreibens kommt in …", "opts": ["Ihre Nachricht vom", "Unsere Nachricht vom", "Datum"], "a": 0, "e": "Es gehört zu „Ihre Nachricht vom“."}, {"q": "Welche Reihenfolge ist richtig?", "opts": ["Ihr Zeichen → Ihre Nachricht vom → Unsere Zeichen → Unsere Nachricht vom", "Unsere Zeichen → Ihr Zeichen → Datum", "Datum → Name → Ihr Zeichen"], "a": 0, "e": "So ist der Bezugszeichenblock aufgebaut."}, {"q": "Merksatz: „Ihr/Ihre“ bezieht sich vor allem auf …", "opts": ["den Empfänger bzw. dessen Schreiben", "immer den Absender", "nur die Sekretärin"], "a": 0, "e": "„Ihr/Ihre“ = andere Seite; „Unser/Unsere“ = eigene Seite."}];
+
+const pixel=[
+{q:"PIXELWERK schreibt zuerst an die KRS Rebdorf. Was steht bei „Ihr Zeichen“?",opts:["pw-lk","nichts","sc-it"],a:1,e:"Es gibt noch kein vorheriges Schreiben der KRS."},
+{q:"Welches eigene Zeichen verwendet PIXELWERK im ersten Brief?",opts:["sc-it","pw-lk","krs-pw"],a:1,e:"Im ersten PIXELWERK-Brief lautet das eigene Zeichen pw-lk."},
+{q:"Die KRS antwortet auf PIXELWERKs Schreiben vom 14.10.2026. Was steht bei „Ihre Nachricht vom“?",opts:["19.10.2026","14.10.2026","bleibt leer"],a:1,e:"Das ist das Datum des fremden Schreibens, auf das geantwortet wird."},
+{q:"Was übernimmt die KRS als „Ihr Zeichen“?",opts:["pw-lk","sc-it","14.10.2026"],a:0,e:"Das Zeichen des vorherigen Absenders wird im Antwortbrief zu „Ihr Zeichen“."},
+{q:"Welches eigene Zeichen verwendet die KRS im Antwortbrief?",opts:["pw-lk","sc-it","lk-pw"],a:1,e:"Das eigene Zeichen des aktuellen Absenders steht bei „Unser Zeichen“."},
+{q:"Was steht im Antwortbrief der KRS bei „Unsere Nachricht vom“?",opts:["14.10.2026","19.10.2026","nichts"],a:2,e:"Die KRS hat in dieser Korrespondenz vorher noch keinen eigenen Brief geschrieben."},
+{q:"Wer ist im zweiten Brief der Empfänger?",opts:["Frau Schmidt / KRS","PIXELWERK GmbH","beide"],a:1,e:"Brief 2 geht von der KRS an PIXELWERK."},
+{q:"Welches Datum gehört im zweiten Brief in das Feld „Datum“?",opts:["14.10.2026","19.10.2026","Datum des ersten Briefes"],a:1,e:"Dort steht das Datum des aktuellen Schreibens."},
+{q:"„Ihr/Ihre“ im Informationsblock bezieht sich auf …",opts:["die andere Seite","immer die KRS","den aktuellen Absender"],a:0,e:"Ihr/Ihre bezeichnet Angaben der anderen Seite."},
+{q:"„Unser/Unsere“ im Informationsblock bezieht sich auf …",opts:["den aktuellen Absender","den Empfänger","den ersten Brief"],a:0,e:"Unser/Unsere bezeichnet Angaben der eigenen Seite."}
+];
+
+const din=[
+{q:"Wie viele Leerzeilen stehen zwischen Betreff und Anrede?",opts:["keine","eine","zwei"],a:2,e:"In unserer Briefvorlage werden zwei Leerzeilen freigelassen."},
+{q:"Wie viele Leerzeilen stehen nach der Anrede?",opts:["eine","zwei","keine"],a:0,e:"Nach der Anrede folgt eine Leerzeile."},
+{q:"Was steht in der Betreffzeile?",opts:["Eine kurze Angabe zum Anliegen","Die Grußformel","Die Bankverbindung"],a:0,e:"Der Betreff nennt knapp das Thema des Briefes."},
+{q:"Was folgt nach der Anrede und einer Leerzeile?",opts:["Fußzeile","Brieftext","Absenderzeile"],a:1,e:"Danach beginnt der eigentliche Brieftext."},
+{q:"Zwischen zwei Textabsätzen lassen wir …",opts:["eine Leerzeile","drei Leerzeilen","keinen Abstand"],a:0,e:"Eine Leerzeile trennt die Absätze sichtbar."},
+{q:"Vor der Grußformel lassen wir …",opts:["eine Leerzeile","keine Leerzeile","vier Leerzeilen"],a:0,e:"Vor der Grußformel bleibt eine Leerzeile."},
+{q:"Welche Grußformel passt zu einem Geschäftsbrief?",opts:["Bis dann!","Mit freundlichen Grüßen","Tschüssi"],a:1,e:"„Mit freundlichen Grüßen“ ist eine passende formelle Grußformel."},
+{q:"Wo steht die kurze Absenderzeile beim Fensterbrief?",opts:["über der Empfängeranschrift","ganz unten","mitten im Brieftext"],a:0,e:"So bleibt sie zusammen mit der Anschrift im Fensterbereich."},
+{q:"Wozu dient der Informationsblock?",opts:["Er sammelt wichtige Bezugs- und Kontaktdaten","Er ersetzt den Brieftext","Er enthält nur die Note"],a:0,e:"Dort stehen Bezugszeichen, Daten und Kontaktdaten."},
+{q:"Welche Schrift verwenden wir in unserer Maske?",opts:["Arial","Comic Sans","Fraktur"],a:0,e:"Die Maske ist mit Arial vorbereitet."}
+];
+
+let qs=[],i=0,tries=0;
+
+function saveProgress(){
+  if(!qs || !qs.length) return;
+  const key = document.getElementById('title').textContent;
+  localStorage.setItem('krsIT_'+key, JSON.stringify({i:i,tries:tries}));
+}
+function leaveQuiz(){
+  saveProgress();
+  show('business');
+}
+function progressKey(title){ return 'krsIT_'+title; }
+function loadProgress(title){
+  try{
+    const raw=localStorage.getItem(progressKey(title));
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(e){ return null; }
+}
+
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function home(){show('home')}
+function startInfo(){start(info,"🕵️ Mission Infoblock")}
+function startPixel(){start(pixel,"🚀 PIXELWERK × KRS")}
+function startDIN(){start(din,"📄 Geschäftsbrief & DIN")}
+function start(arr,title){
+ qs=arr;document.getElementById('title').textContent=title;
+ const saved=loadProgress(title);
+ if(saved && saved.i>0 && saved.i<arr.length){
+   if(confirm('Du hast diese Übung schon begonnen. Möchtest du an Aufgabe '+(saved.i+1)+' weitermachen?')){
+     i=saved.i;tries=saved.tries||0;
+   }else{
+     i=0;tries=0;localStorage.removeItem(progressKey(title));
+   }
+ }else{i=0;tries=0}
+ show('quiz');render()
+}
+function render(){
+ const x=qs[i];document.getElementById('bar').style.width=(i/qs.length*100)+'%';
+ document.getElementById('counter').textContent='Aufgabe '+(i+1)+' von '+qs.length;
+ let b='<h2>'+x.q+'</h2><div id="opts"></div><div id="feedback"></div><button id="next">Weiter →</button><div class="note">Du kommst erst weiter, wenn du die richtige Antwort gefunden hast.</div>';
+ document.getElementById('qbox').innerHTML=b;
+ const o=document.getElementById('opts');
+ x.opts.forEach((t,j)=>{let z=document.createElement('button');z.className='opt';z.textContent=t;z.onclick=()=>check(j,z);o.appendChild(z)})
+}
+function check(j,b){
+ const x=qs[i],f=document.getElementById('feedback');
+ if(j===x.a){b.classList.add('correct');document.querySelectorAll('.opt').forEach(z=>z.disabled=true);f.innerHTML='✅ Richtig! <span style="font-weight:normal">'+x.e+'</span>';let n=document.getElementById('next');n.style.display='inline-block';n.onclick=next}
+ else{tries++;b.classList.add('wrong');f.textContent='❌ Noch nicht. Überlege noch einmal.';setTimeout(()=>b.classList.remove('wrong'),600)}
+}
+function next(){i++;saveProgress();if(i<qs.length)render();else finish()}
+function finish(){localStorage.removeItem(progressKey(document.getElementById('title').textContent));document.getElementById('bar').style.width='100%';document.getElementById('counter').textContent='Geschafft!';document.getElementById('qbox').innerHTML='<div style="text-align:center;padding:28px;font-size:22px">🎉 <b>Training geschafft!</b><br><br>Alle '+qs.length+' Aufgaben gelöst.<br><span class="note">Falsche Versuche: '+tries+'</span><br><br><button class="back" onclick="show(&quot;business&quot;)">Zurück zu Geschäftsbrief</button></div>'}
+</script>
+</body></html>
