@@ -169,7 +169,7 @@ const topicSets = {"general": [{"type": "choice", "q": "Welche Reihenfolge ist r
 const topicNames = {"general": "📘 Geschäftsbrief allgemein", "info": "🔎 Infoblock", "sender": "🏢 Absender", "address": "✉️ Adressfeld", "bodytext": "📝 Brieftext", "closing": "🤝 Schlussformel"};
 function startTopic(k){start(k==='info'?info:topicSets[k],topicNames[k]);}
 
-let qs=[],i=0,tries=0,activeMode='classic',orderState=[],answered=false;
+let qs=[],i=0,tries=0,activeMode='classic',orderState=[],answered=false,orderMistakes=0;
 
 function saveProgress(){
   if(!qs || !qs.length) return;
@@ -208,12 +208,13 @@ function start(arr,title){
  show('quiz');render()
 }
 function render(){
- answered=false;
+ answered=false;orderMistakes=0;
  const x=qs[i];document.getElementById('bar').style.width=(i/qs.length*100)+'%';
  document.getElementById('counter').textContent='Aufgabe '+(i+1)+' von '+qs.length;
- document.getElementById('qbox').innerHTML='<h2>'+x.q+'</h2><div id="opts"></div><div id="feedback" aria-live="polite"></div><button id="next">Weiter →</button><div class="note">Du kommst erst weiter, wenn du die richtige Antwort gefunden hast.</div>';
+ document.getElementById('qbox').innerHTML='<h2>'+x.q+'</h2><div id="opts"></div><div id="feedback" aria-live="polite"></div><button id="next">Weiter →</button><div class="note" id="taskNote">Du kommst erst weiter, wenn du die richtige Antwort gefunden hast.</div>';
  const o=document.getElementById('opts');
  if(x.type==='order'){
+   if(document.getElementById('title').textContent.includes('Geschäftsbrief-Challenge'))document.getElementById('taskNote').textContent='Bei Sortieraufgaben erhältst du nach dem ersten Fehler einen Hinweis. Nach vier Fehlversuchen siehst du die Lösung und kannst weitergehen.';
    orderState=x.items.map((v,k)=>({v:v,k:k}));
    for(let j=orderState.length-1;j>0;j--){let r=Math.floor(Math.random()*(j+1));[orderState[j],orderState[r]]=[orderState[r],orderState[j]];}
    if(orderState.every((v,j)=>v.k===j)&&orderState.length>1)[orderState[0],orderState[1]]=[orderState[1],orderState[0]];
@@ -230,7 +231,35 @@ function render(){
 }
 function success(message){answered=true;document.getElementById('feedback').innerHTML='✅ Richtig! <span style="font-weight:normal">'+message+'</span>';const n=document.getElementById('next');n.style.display='inline-block';n.onclick=next;}
 function checkInput(){if(answered)return;const x=qs[i],v=document.getElementById('answer').value.trim().toLowerCase().replace(/\s+/g,' ');if(x.answers.some(a=>a.toLowerCase()===v)){document.getElementById('answer').disabled=true;document.getElementById('submitAnswer').disabled=true;success(x.e)}else{tries++;document.getElementById('feedback').textContent='❌ Noch nicht richtig. Versuche es erneut.'}}
-function drawOrder(){const o=document.getElementById('opts');o.innerHTML='<div class="order-list">'+orderState.map((v,j)=>'<div class="order-row"><strong>'+(j+1)+'.</strong><span>'+v.v+'</span><button data-dir="-1" data-pos="'+j+'" aria-label="Nach oben">↑</button><button data-dir="1" data-pos="'+j+'" aria-label="Nach unten">↓</button></div>').join('')+'</div><button class="action" id="checkOrder">Reihenfolge prüfen</button>';o.querySelectorAll('[data-pos]').forEach(b=>b.onclick=()=>{const a=Number(b.dataset.pos),c=a+Number(b.dataset.dir);if(c<0||c>=orderState.length)return;[orderState[a],orderState[c]]=[orderState[c],orderState[a]];drawOrder()});document.getElementById('checkOrder').onclick=()=>{if(orderState.every((v,j)=>v.k===j)){o.querySelectorAll('button').forEach(b=>b.disabled=true);success(qs[i].e)}else{tries++;document.getElementById('feedback').textContent='❌ Noch nicht ganz. Verschiebe die Bausteine mit den Pfeilen.'}}}
+function drawOrder(){
+ const o=document.getElementById('opts');
+ o.innerHTML='<div class="order-list">'+orderState.map((v,j)=>'<div class="order-row"><strong>'+(j+1)+'.</strong><span>'+v.v+'</span><button data-dir="-1" data-pos="'+j+'" aria-label="Nach oben">↑</button><button data-dir="1" data-pos="'+j+'" aria-label="Nach unten">↓</button></div>').join('')+'</div><button class="action" id="checkOrder">Reihenfolge prüfen</button>';
+ o.querySelectorAll('[data-pos]').forEach(b=>b.onclick=()=>{const a=Number(b.dataset.pos),c=a+Number(b.dataset.dir);if(c<0||c>=orderState.length)return;[orderState[a],orderState[c]]=[orderState[c],orderState[a]];drawOrder()});
+ document.getElementById('checkOrder').onclick=()=>{
+  if(answered)return;
+  if(orderState.every((v,j)=>v.k===j)){
+   o.querySelectorAll('button').forEach(b=>b.disabled=true);
+   success(qs[i].e);
+  }else{
+   tries++;orderMistakes++;
+   const f=document.getElementById('feedback');
+   const inChallenge=document.getElementById('title').textContent.includes('Geschäftsbrief-Challenge');
+   if(inChallenge && orderMistakes>=4){
+    orderState.sort((a,b)=>a.k-b.k);
+    drawOrder();
+    document.querySelectorAll('#opts button').forEach(b=>b.disabled=true);
+    answered=true;
+    f.innerHTML='💡 <strong>Nach 4 Versuchen zeigen wir dir die richtige Reihenfolge.</strong> Schau sie dir an und gehe dann weiter. <span style="font-weight:normal">'+qs[i].e+'</span>';
+    const n=document.getElementById('next');n.style.display='inline-block';n.onclick=next;
+   }else if(inChallenge){
+    const hint=orderMistakes===1 ? '💡 <strong>Hinweis:</strong> Überlege, welche Angaben ganz oben im Brief stehen und welche erst nach dem eigentlichen Text folgen.' : '💡 <strong>Tipp:</strong> Prüfe die Reihenfolge von oben nach unten. ('+orderMistakes+' von 4 Fehlversuchen)';
+    f.innerHTML=hint;
+   }else{
+    f.textContent='❌ Noch nicht ganz. Verschiebe die Bausteine mit den Pfeilen.';
+   }
+  }
+ };
+}
 function check(j,b){
  if(answered)return;
  const x=qs[i],f=document.getElementById('feedback');
