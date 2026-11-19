@@ -17,6 +17,7 @@ main{max-width:1050px;margin:28px auto;padding:0 18px 50px}
 .hero h2{font-size:32px;margin:0 0 8px} .hero p{margin:0;color:#dceaf1}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:17px;margin-top:22px}
 .tile{background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 25px #17384b16;border-top:5px solid var(--blue);cursor:pointer;transition:.18s}
+.tile:focus-visible{outline:3px solid #2979a7;outline-offset:3px}
 .tile:hover{transform:translateY(-3px);box-shadow:0 12px 30px #17384b28}
 .tile.disabled{cursor:default;opacity:.65;border-top-color:#aeb9bf}
 .icon{font-size:35px} .tile h3{margin:9px 0 6px;font-size:20px} .tile p{color:var(--muted);line-height:1.4}
@@ -29,6 +30,61 @@ main{max-width:1050px;margin:28px auto;padding:0 18px 50px}
 .correct{border-color:#4aa77b!important;background:#e5f6ed!important} .wrong{border-color:#d76b6b!important;background:#fdeaea!important}
 #feedback{min-height:48px;padding:10px 2px;font-weight:bold} #next{display:none;border:0;border-radius:12px;padding:12px 18px;background:#17384b;color:#fff;font-weight:bold;cursor:pointer}
 .note{font-size:13px;color:var(--muted)} footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+
+.summary-grid{display:grid;grid-template-columns:minmax(270px,1.2fr) minmax(270px,1fr);gap:18px;margin-top:18px}.paper{background:#fff;border:1px solid #cadbe4;box-shadow:0 8px 22px #17384b16;padding:22px;border-radius:12px;line-height:1.55;font-size:14px}.paper .letterhead{font-size:24px;font-weight:800;color:#237e70;border-bottom:3px solid #8dc8bd;padding-bottom:9px}.paper .space{height:18px}.paper .line{border-left:4px solid #c7e7f2;padding-left:10px;margin:8px 0}.pill{display:inline-block;background:#e4f2fa;color:#164766;border-radius:7px;padding:3px 8px;font-size:12px;font-weight:bold}.rules{display:grid;gap:10px}.rule{background:#fff;padding:15px;border-radius:14px;border-left:5px solid #2979a7;box-shadow:0 3px 12px #17384b10}.rule h3{margin:0 0 6px}.rule p{margin:0;line-height:1.55}.action{border:0;background:#17384b;color:white;border-radius:12px;padding:12px 17px;font:inherit;font-weight:bold;cursor:pointer;margin:7px 6px 7px 0}.action.secondary{background:#e6f2f8;color:#17384b}.mode{font-size:12px;color:#647a86;text-transform:uppercase;letter-spacing:1px;font-weight:bold;margin-top:16px}.order-list{display:grid;gap:8px}.order-row{display:flex;align-items:center;gap:10px;background:#f3f8fb;padding:10px;border-radius:10px}.order-row span{flex:1}.order-row button{border:1px solid #b8d0dd;border-radius:7px;background:white;padding:7px 12px;cursor:pointer}.field{width:100%;padding:14px;border:2px solid #c9dbe5;border-radius:12px;font:inherit;margin:12px 0}.highlight{background:#e7f5ec;border-left:4px solid #3b9270;padding:13px;border-radius:9px}.tile:focus-visible,.opt:focus-visible,.action:focus-visible{outline:3px solid #f0ac36;outline-offset:3px}@media(max-width:700px){.summary-grid{grid-template-columns:1fr}.card{padding:16px}.hero h2{font-size:26px}}
+.answer-input{padding:14px;border:2px solid #a9cadb;border-radius:12px;font:inherit;max-width:100%;margin:12px 10px 12px 0}.order-list{display:grid;gap:8px;margin:14px 0}.order-row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#eef6fb}.order-row span{flex:1}.order-row button{border:0;border-radius:8px;background:#17384b;color:white;padding:8px 12px;cursor:pointer}.action{border:0;background:#2979a7;color:white;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:bold}#next{display:none}
+/* KRS Lernwelt – farbenfrohes Redesign */
+:root{--b:#192b4d;--blue:#5665ef;--light:#f4f7ff;--wine:#eb5a91;--green:#14a78c;--muted:#64718c}
+html{scroll-behavior:smooth}
+body{font-family:'Century Gothic','Trebuchet MS',Arial,sans-serif;background:radial-gradient(circle at 8% 15%,#e5dfff 0,transparent 30%),radial-gradient(circle at 92% 24%,#d8f8f2 0,transparent 32%),linear-gradient(155deg,#f6f8ff,#fff4fa);min-height:100vh}
+header{background:#ffffffd9;backdrop-filter:blur(12px);border-bottom:3px solid #e5e9ff;box-shadow:0 4px 22px #27346b0d;position:relative;z-index:2}
+.head{max-width:1200px}.brand h1{font-size:clamp(24px,3vw,35px);color:#233269;letter-spacing:-1px}.brand p{font-size:13px}
+.logo{background:linear-gradient(120deg,#5c64ee,#b64dd5);border:0;color:#fff;box-shadow:0 6px 17px #655bea44;transform:rotate(2deg)}
+main{max-width:1200px;margin:30px auto}
+.hero{position:relative;overflow:hidden;background:linear-gradient(112deg,#303caa 0%,#6559d9 54%,#bc55bb 100%);border:1px solid #ffffff88;border-radius:28px;padding:34px 36px;box-shadow:0 16px 36px #5d55ba38}
+.hero:before{content:'✦';position:absolute;right:12%;top:-45px;font-size:170px;color:#ffffff16;transform:rotate(22deg)}
+.hero:after{content:'✧  ✦  ✧';position:absolute;right:28px;bottom:18px;font-size:27px;color:#ffffff70;letter-spacing:10px}
+.hero h2{font-size:clamp(26px,4vw,40px);position:relative;z-index:1}.hero p{color:#f3eeff;font-size:16px;line-height:1.55;max-width:750px;position:relative;z-index:1}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:19px;margin-top:25px}
+.tile{--accent:#6065e9;--tint:#eef0ff;position:relative;overflow:hidden;background:#fff;border:2px solid #fff;border-top:0;border-radius:24px;padding:21px;min-height:207px;box-shadow:0 8px 25px #29345d17;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tile:before{content:'';position:absolute;left:0;top:0;right:0;height:7px;background:var(--accent)}
+.tile:after{content:'↗';position:absolute;right:17px;bottom:15px;font-size:22px;color:var(--accent);opacity:.65;font-weight:bold}
+.tile:hover{transform:translateY(-7px) rotate(-.5deg);border-color:var(--accent);box-shadow:0 17px 32px #26375c27}
+.tile:nth-child(8n + 1){--accent:#5d64ef;--tint:#eeefff}
+.tile:nth-child(8n + 2){--accent:#0c9fbb;--tint:#e3f9ff}
+.tile:nth-child(8n + 3){--accent:#ef8c3b;--tint:#fff1df}
+.tile:nth-child(8n + 4){--accent:#e25e97;--tint:#fff0f6}
+.tile:nth-child(8n + 5){--accent:#21a78b;--tint:#e2faf3}
+.tile:nth-child(8n + 6){--accent:#8c65d8;--tint:#f3eaff}
+.tile:nth-child(8n + 7){--accent:#2784d2;--tint:#e7f4ff}
+.tile:nth-child(8n + 8){--accent:#d99c18;--tint:#fff5d8}
+.tile .icon{display:grid;place-items:center;width:67px;height:67px;border-radius:20px;background:var(--tint);font-size:35px;box-shadow:inset 0 0 0 1px #ffffffaa}
+.tile h3{font-size:18px;line-height:1.3;margin:15px 0 7px;color:#263457}
+.tile p{font-size:13px;line-height:1.5;margin:0 0 14px;padding-right:5px}
+.tag{background:var(--tint);color:var(--accent);font-size:11px;margin-top:13px;padding:6px 10px}
+.tile.disabled{opacity:.53;filter:saturate(.6)}.tile.disabled:after{content:'🔒';font-size:17px}
+.back,.action,#next{transition:transform .15s,filter .15s}.back:hover,.action:hover,#next:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.back{border:1px solid #e1e5fa;color:#343e8a;box-shadow:0 4px 12px #27346b12;padding:12px 16px}
+.card{border:1px solid #e5e7ff;border-radius:25px;box-shadow:0 15px 40px #27346b18;padding:30px}
+.card h2{color:#303a91}.progress{height:15px;background:#e9eaff}.progress #bar{background:linear-gradient(90deg,#5c6cf0,#dc5eac);border-radius:15px}
+.opt{border:2px solid #e0e4f8;border-radius:16px;padding:17px 20px;transition:.15s;font-weight:600}.opt:hover:not(:disabled){background:#f0f2ff;border-color:#797ce8;transform:translateX(4px)}
+#next,.action{background:linear-gradient(110deg,#5868e9,#a45bd7);box-shadow:0 5px 15px #5c61dc3b}
+#feedback{line-height:1.6}.field,.answer-input{border-color:#b9c0f0}
+.paper{border:2px solid #e3e9fa;box-shadow:0 12px 30px #26375c16}.paper .line{border-left-color:#7779e6}.pill{background:#e8eaff;color:#404aab}
+.rule{border-left-color:#8274e7;box-shadow:0 5px 18px #26375c12}.rule:nth-child(2n){border-left-color:#1eb9a2}.rule:nth-child(3n){border-left-color:#ef8c7a}
+footer{padding:25px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.grid{grid-template-columns:1fr}.tile{min-height:160px}.hero{padding:27px 22px}.hero:after{display:none}.logo{font-size:12px;padding:8px}.head{gap:8px}.card{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+<style>
+.letter-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px}
+.letter-field{background:#f4f8fc;border:2px solid #dbe7f2;border-radius:15px;padding:12px}
+.letter-field label{display:block;font-weight:800;margin-bottom:7px}
+.letter-field textarea,.letter-field input{width:100%;border:2px solid #cad9e6;border-radius:10px;padding:10px;font:inherit;background:white;resize:vertical}
+.letter-field.good{border-color:#36a878;background:#edfff5}.letter-field.bad{border-color:#e08a50;background:#fff5eb}
+.field-feedback{font-size:13px;margin-top:7px;line-height:1.4}
+#letterResult{margin-top:16px;font-weight:700}
 </style>
 </head>
 <body>
@@ -36,7 +92,7 @@ main{max-width:1050px;margin:28px auto;padding:0 18px 50px}
 
 <main>
 <section id="home" class="screen active">
- <div class="hero"><h2>Willkommen im IT-Training 👋</h2><p>Wähle ein Thema und starte deine Übung. Das Portal kann später einfach um weitere Unterrichtsthemen ergänzt werden.</p></div>
+ <div class="hero"><h2>Willkommen im IT-Training 👋</h2><p>Deine Lernwelt: Entdecken, trainieren, besser werden. Wähle einen Lernbereich und starte deine Mission!</p></div>
  <div class="grid">
    <div class="tile" onclick="show('business')"><div class="icon">📄</div><span class="tag">aktuelle Themen</span><h3>Geschäftsbrief</h3><p>Geschäftsbriefe, Informationsblock, DIN-Regeln und unsere PIXELWERK-Korrespondenz.</p></div>
    <div class="tile disabled"><div class="icon">📊</div><span class="tag">wird ergänzt</span><h3>Excel</h3><p>Hier sammeln wir später alle Übungen zu Tabellenkalkulation und Excel.</p></div>
@@ -47,15 +103,36 @@ main{max-width:1050px;margin:28px auto;padding:0 18px 50px}
 
 <section id="business" class="screen">
  <button class="back" onclick="home()">← Zur Hauptübersicht</button>
- <div class="hero"><h2>📄 Geschäftsbrief</h2><p>Wähle das Thema aus, das du üben möchtest.</p></div>
- <div class="grid">
-   <div class="tile" onclick="startInfo()"><div class="icon">🕵️</div><span class="tag">20 Aufgaben</span><h3>Informationsblock</h3><p>Ihr Zeichen, Ihre Nachricht vom, unser Zeichen, unsere Nachricht vom und Datum.</p></div>
-   <div class="tile" onclick="startPixel()"><div class="icon">🚀</div><span class="tag">10 Aufgaben</span><h3>PIXELWERK × KRS</h3><p>Bezugszeichen und Informationsblock anhand unserer aktuellen Geschäftskorrespondenz.</p></div>
-   <div class="tile" onclick="startDIN()"><div class="icon">📐</div><span class="tag">10 Aufgaben</span><h3>DIN-Regeln & Aufbau</h3><p>Betreff, Anrede, Leerzeilen, Abstände und Aufbau des Geschäftsbriefs.</p></div>
-   <div class="tile disabled"><div class="icon">✉️</div><span class="tag">wird ergänzt</span><h3>Geschäftskorrespondenz</h3><p>Hier können später komplette Brief-Fälle mit KRS und PIXELWERK hinzukommen.</p></div>
- </div>
+ <div class="hero"><h2>📄 Geschäftsbrief</h2><p>Entdecke 8 Lernstationen: Übe Schritt für Schritt und meistere am Ende die Geschäftsbrief-Challenge!</p></div>
+  <div class="grid">
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('general')"><div class="icon">📘</div><span class="tag">Übungen</span><h3>Geschäftsbrief allgemein</h3><p>Grundaufbau, Betreff und DIN-Regeln</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('info')"><div class="icon">🔎</div><span class="tag">Übungen</span><h3>Infoblock</h3><p>Bezugszeichen, Datum und Kontaktdaten</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('sender')"><div class="icon">🏢</div><span class="tag">Übungen</span><h3>Absender</h3><p>Briefkopf, Firmenangaben und Absenderzeile</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('address')"><div class="icon">✉️</div><span class="tag">Übungen</span><h3>Adressfeld</h3><p>Empfängeranschrift und postalische Angaben</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('bodytext')"><div class="icon">📝</div><span class="tag">Übungen</span><h3>Brieftext</h3><p>Anrede, Formulierungen und Absätze</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startTopic('closing')"><div class="icon">🤝</div><span class="tag">Übungen</span><h3>Schlussformel</h3><p>Grußformel, Unterschrift, Anlagen und Verteiler</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="show('summary')"><div class="icon">📚</div><span class="tag">Lernübersicht</span><h3>Gesamtübersicht</h3><p>Musterbrief und alle Regeln auf einen Blick</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="showLetterExercise()"><div class="icon">✍️</div><span class="tag">NEU · Schreibwerkstatt</span><h3>Geschäftsbrief selbst schreiben</h3><p>Fülle einen vollständigen Geschäftsbrief aus und prüfe deine Eingaben mit direktem Feedback.</p></div>
+    <div class="tile" role="button" tabindex="0" onclick="startMixed()"><div class="icon">🏆</div><span class="tag">Abschluss</span><h3>Geschäftsbrief-Challenge</h3><p>Gemischte Abschlussaufgaben zu allen Themen</p></div>
+  </div>
 </section>
 
+<section id="summary" class="screen"><button class="back" onclick="show('business')">← Zurück zu Geschäftsbrief</button><div class="hero"><h2>📚 Gesamtübersicht · Geschäftsbrief</h2><p>Alle wichtigen Regeln auf einen Blick. Klicke auf die Bausteine und übe danach mit der Challenge.</p></div><div class="summary-grid"><div class="paper"><div class="letterhead">🌿 Bergblick Möbel GmbH</div><div style="font-size:12px;color:#657a86">Musterstraße 8 · 85072 Eichstätt</div><div class="space"></div><div class="line"><span class="pill">1 · Anschriftenfeld</span><br>Bergblick Möbel GmbH · Musterstraße 8 · 85072 Eichstätt<br>Schulbedarf Huber GmbH<br>Frau Jana Huber<br>Bahnhofstraße 12<br>85049 Ingolstadt</div><div class="line" style="background:#f0f7fb;padding:9px"><span class="pill">2 · Informationsblock</span><br>Ihr Zeichen: hu/ek<br>Ihre Nachricht vom: 10.11.2026<br>Unser Zeichen: be/ma<br>Unsere Nachricht vom: –<br>Kontakt: Max Bauer · 08421 12345<br>Datum: 19.11.2026</div><div class="space"></div><div class="line"><span class="pill">3 · Betreff</span><br><strong>Angebot für Schreibtische</strong></div><div class="space"></div><div class="line"><span class="pill">4 · Anrede</span><br>Sehr geehrte Frau Huber,</div><div class="space"></div><div class="line"><span class="pill">5 · Brieftext</span><br>vielen Dank für Ihre Anfrage vom 10. November 2026.<br><br>Gerne bieten wir Ihnen zehn Schreibtische an. Die Preisliste finden Sie in der Anlage.<br><br>Bei Fragen helfen wir Ihnen gerne weiter.</div><div class="space"></div><div class="line"><span class="pill">6 · Grußformel</span><br>Mit freundlichen Grüßen</div><div class="space"></div><div class="line"><span class="pill">7 · Briefschluss</span><br>Bergblick Möbel GmbH<br><br><br><em>Max Bauer (Unterschrift)</em><br>i. A. Max Bauer<br>Vertrieb</div><div class="space"></div><div class="line"><span class="pill">8 · Anlagen</span><br>Anlage<br>1 Preisliste</div><p class="note">Fiktiver Musterbrief zur Übung. Leerzeilen sind zur besseren Übersicht dargestellt; die konkrete Positionierung richtet sich nach der verwendeten Briefvorlage.</p></div><div class="rules"><div class="rule"><h3>✉️ Anschriftenfeld</h3><p>85 × 45 mm. Im Unterricht: oberer Bereich mit 5 Zeilen für Zusatz- und Vermerkzone, darunter 6 Zeilen für die Empfängeranschrift. Anschrift ohne Leerzeilen schreiben.</p></div><div class="rule"><h3>🔎 Informationsblock</h3><p><strong>Ihr/Ihre</strong> = Angaben der anderen Seite. <strong>Unser/Unsere</strong> = Angaben des aktuellen Absenders. Datum = Tag des aktuellen Briefs.</p></div><div class="rule"><h3>📏 Leerzeilen</h3><p>Nach dem Betreff <strong>2 Leerzeilen</strong> bis zur Anrede; nach der Anrede <strong>1 Leerzeile</strong> bis zum Brieftext; zwischen Absätzen und vor der Grußformel jeweils <strong>1 Leerzeile</strong> (gemäß eurer Übungsvorlage).</p></div><div class="rule"><h3>🖊️ Briefschluss</h3><p>Grußformel, ggf. Firmenname, Unterschrift, gedruckter Name/Funktion, Anlage(n) und ggf. Verteiler. <strong>i. A.</strong> = im Auftrag; <strong>i. V.</strong> = in Vertretung; <strong>ppa.</strong> = per procura.</p></div><div class="rule"><h3>📎 Anlage und Verteiler</h3><p><strong>Anlage</strong> = ein beigefügtes Dokument; <strong>Anlagen</strong> = mehrere Dokumente; <strong>Verteiler</strong> = weitere Personen oder Stellen, die den Brief erhalten.</p></div><div class="rule"><h3>🧠 Für den Test</h3><p>Du solltest den Brief aufbauen, Infoblock-Angaben zuordnen, Leerzeilen zählen, Fehler korrigieren und den Briefschluss selbst formulieren können.</p></div><button class="action" onclick="startMixed()">🏆 Jetzt Gesamt-Challenge starten →</button></div></div></section>
+<section id="letterExercise" class="screen">
+<button class="back" onclick="show('business')">← Zurück zu Geschäftsbrief</button>
+<div class="hero"><h2>✍️ Geschäftsbrief-Werkstatt</h2><p>Schreibe einen vollständigen Geschäftsbrief. Prüfe die einzelnen Felder und verbessere deine Fehler!</p></div>
+<div class="card" style="margin-top:18px">
+<h3>📦 Dein Auftrag <span id="letterScenario" class="tag"></span></h3>
+<p id="letterAssignment"></p>
+<p class="note">Hinweis: Die automatische Kontrolle prüft Pflichtangaben, Aufbau und wichtige Schlüsselbegriffe. Freie Formulierungen kann sie nicht so zuverlässig beurteilen wie eine Lehrkraft.</p>
+<div id="letterFields" class="letter-fields"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px">
+<button class="action" onclick="checkLetter()">🔍 Geschäftsbrief überprüfen</button>
+<button class="back" onclick="resetLetter()">🎲 Neues Beispiel</button>
+</div>
+<div id="letterResult" aria-live="polite"></div>
+</div>
+</section>
 <section id="quiz" class="screen">
  <button class="back" onclick="show('business')">← Zurück zu Geschäftsbrief</button>
  <div class="card">
@@ -98,7 +175,26 @@ const din=[
 {q:"Welche Schrift verwenden wir in unserer Maske?",opts:["Arial","Comic Sans","Fraktur"],a:0,e:"Die Maske ist mit Arial vorbereitet."}
 ];
 
-let qs=[],i=0,tries=0;
+const mixed=[
+{type:'order',q:'Bringe die wichtigsten Bestandteile des Geschäftsbriefs in die richtige Reihenfolge.',items:['Briefkopf','Anschriftenfeld','Informationsblock / Datum','Betreff','Anrede','Brieftext','Grußformel','Briefschluss / Anlagen'],e:'Von oben nach unten folgt auf den Briefkopf das Anschriftenfeld und schließlich der Briefschluss.'},
+{type:'input',q:'Wie viele Leerzeilen stehen in unserer Briefvorlage zwischen Betreff und Anrede?',answers:['2','zwei'],e:'Zwischen Betreff und Anrede stehen zwei Leerzeilen.'},
+{type:'choice',q:'Du antwortest auf den Brief der Firma Huber vom 10.11.2026. In welches Feld kommt dieses Datum?',opts:['Ihre Nachricht vom','Unsere Nachricht vom','Datum des aktuellen Briefes'],a:0,e:'Die Nachricht stammt von der anderen Seite.'},
+{type:'order',q:'Sortiere die Bestandteile des Briefschlusses.',items:['Grußformel','Firmenname (falls angegeben)','Platz für Unterschrift','Name und Funktion','Anlage(n)','Verteiler (falls vorhanden)'],e:'Die Grußformel steht vor Unterschrift und Namen; Anlagen und Verteiler folgen.'},
+{type:'input',q:'Wie lautet die Abkürzung für „im Auftrag“?',answers:['i. a.','i.a.','ia'],e:'Die Abkürzung lautet i. A.'},
+{type:'choice',q:'Welche Betreffzeile ist für einen Geschäftsbrief richtig?',opts:['Betreff: Angebot für Schulmöbel','Angebot für Schulmöbel','Hallo, es geht um Schulmöbel'],a:1,e:'Der Betreff ist kurz und wird ohne das Wort „Betreff“ geschrieben.'},
+{type:'input',q:'Wie viele Zeilen umfasst der Empfängerbereich im Anschriftenfeld in unserer Vorlage?',answers:['6','sechs'],e:'Für die Empfängeranschrift sind sechs Zeilen vorgesehen.'},
+{type:'choice',q:'Eine Firma schreibt erstmals an eine andere. Was steht bei „Ihr Zeichen“?',opts:['Das eigene Kürzel','Ein Strich oder keine Angabe','Immer das aktuelle Datum'],a:1,e:'Es gibt noch kein Bezugszeichen der Gegenseite.'},
+{type:'input',q:'Welche Abkürzung kennzeichnet eine Unterschrift mit Prokura?',answers:['ppa.','ppa'],e:'ppa. steht für per procura.'},
+{type:'choice',q:'Was ist an „Sehr geehrte Frau Huber“ als Anrede zu korrigieren?',opts:['Ein Komma am Ende ergänzen','Ein Ausrufezeichen ergänzen','Den Namen weglassen'],a:0,e:'Die formelle Anrede endet mit einem Komma.'},
+{type:'choice',q:'Was bedeutet „Verteiler“ im Geschäftsbrief?',opts:['Liste weiterer Empfänger','Liste aller Anlagen','Liste der Postleitzahlen'],a:0,e:'Der Verteiler nennt weitere Personen oder Stellen, die den Brief erhalten.'},
+{type:'input',q:'Wie viele Millimeter breit ist das Anschriftenfeld?',answers:['85','85 mm'],e:'Das Anschriftenfeld ist 85 mm breit.'}
+];
+
+const topicSets = {"general": [{"type": "choice", "q": "Welche Reihenfolge ist richtig?", "opts": ["Briefkopf → Anschriftenfeld → Betreff → Anrede → Brieftext → Grußformel", "Betreff → Briefkopf → Grußformel → Anschrift", "Anrede → Brieftext → Anschrift → Betreff"], "a": 0, "e": "So ist die Grundreihenfolge."}, {"type": "input", "q": "Wie heißt die kurze Themenangabe über der Anrede?", "answers": ["betreff"], "e": "Diese Angabe heißt Betreff."}, {"type": "choice", "q": "Welche Betreffzeile ist korrekt?", "opts": ["Betreff: Bestellung von Heften", "Bestellung von Heften", "Hallo, neue Hefte!"], "a": 1, "e": "Vor die Betreffangabe schreibt man nicht „Betreff:“."}, {"type": "order", "q": "Ordne die Briefteile von oben nach unten.", "items": ["Briefkopf", "Anschriftenfeld", "Betreff", "Anrede", "Brieftext", "Grußformel"], "e": "Die Bausteine sind richtig geordnet."}, {"type": "choice", "q": "Welche Norm ist für Geschäftsbriefe im Unterricht wichtig?", "opts": ["DIN 5008", "DIN A0", "DIN 18040"], "a": 0, "e": "DIN 5008 enthält Schreib- und Gestaltungsregeln."}, {"type": "input", "q": "Wie viele Leerzeilen stehen in eurer Vorlage zwischen Betreff und Anrede?", "answers": ["2", "zwei"], "e": "Es sind zwei Leerzeilen."}, {"type": "choice", "q": "Welche Anrede passt?", "opts": ["Hey Herr Bauer!", "Sehr geehrter Herr Bauer,", "Guten Morgen, Bauer!"], "a": 1, "e": "Eine formelle Anrede endet mit Komma."}, {"type": "choice", "q": "Was folgt auf die Anrede?", "opts": ["Eine Leerzeile und der Brieftext", "Direkt die Grußformel", "Das Anschriftenfeld"], "a": 0, "e": "Nach der Anrede folgt eine Leerzeile und der Text."}], "sender": [{"type": "choice", "q": "Was gehört in den Briefkopf?", "opts": ["Firmenname und Anschrift", "Name des Empfängers", "Anlagenvermerk"], "a": 0, "e": "Der Briefkopf kennzeichnet den Absender."}, {"type": "input", "q": "Wie nennt man die Person oder Firma, die den Brief verschickt?", "answers": ["absender"], "e": "Das ist der Absender."}, {"type": "choice", "q": "Wo steht die kleine Absenderzeile bei einem Fensterbrief?", "opts": ["Oberhalb der Empfängeranschrift", "Nach der Grußformel", "Unter dem Betreff"], "a": 0, "e": "Die Absenderzeile befindet sich oberhalb der Empfängeranschrift."}, {"type": "choice", "q": "Welche Angabe gehört typischerweise zum Absender?", "opts": ["Firmenanschrift", "Empfänger-Postfach", "Empfänger-Anrede"], "a": 0, "e": "Die Firmenanschrift ist eine Absenderangabe."}, {"type": "order", "q": "Ordne die Angaben einer üblichen Firmenanschrift.", "items": ["Firmenname", "Straße und Hausnummer", "Postleitzahl und Ort"], "e": "So ist die Firmenanschrift aufgebaut."}, {"type": "choice", "q": "Was kann zusätzlich im Briefkopf stehen?", "opts": ["Firmenlogo", "Notenschlüssel", "Klassenarbeit"], "a": 0, "e": "Ein Logo kann die Firma kennzeichnen."}, {"type": "input", "q": "Wie heißt die grafische Kennzeichnung einer Firma?", "answers": ["logo", "firmenlogo"], "e": "Das ist das Firmenlogo."}, {"type": "choice", "q": "Wessen Anschrift steht im Briefkopf?", "opts": ["Die des Absenders", "Die des Empfängers", "Die der Postfiliale"], "a": 0, "e": "Der Briefkopf gehört dem Absender."}], "address": [{"type": "input", "q": "Wie breit ist das Anschriftenfeld in Millimetern?", "answers": ["85", "85 mm"], "e": "Es ist 85 mm breit."}, {"type": "choice", "q": "Wie hoch ist das Anschriftenfeld?", "opts": ["45 mm", "85 mm", "20 mm"], "a": 0, "e": "Die Höhe beträgt 45 mm."}, {"type": "input", "q": "Wie viele Zeilen umfasst der Empfängerbereich eurer Vorlage?", "answers": ["6", "sechs"], "e": "Der Empfängerbereich umfasst sechs Zeilen."}, {"type": "choice", "q": "Welche Schreibweise ist richtig?", "opts": ["85072 Eichstätt", "Eichstätt 85072", "85072, Eichstätt"], "a": 0, "e": "PLZ steht vor dem Ort, ohne Komma."}, {"type": "order", "q": "Ordne eine einfache Empfängeranschrift.", "items": ["Schulbedarf Huber GmbH", "Bahnhofstraße 12", "85049 Ingolstadt"], "e": "Firma, Straße, PLZ und Ort."}, {"type": "choice", "q": "Wo steht die Empfängeranschrift?", "opts": ["Im Anschriftenfeld", "In der Grußformel", "Im Betreff"], "a": 0, "e": "Die Empfängeranschrift steht im Anschriftenfeld."}, {"type": "input", "q": "Wie viele Zeilen sind in eurer Vorlage im oberen Bereich des Anschriftenfelds vorgesehen?", "answers": ["5", "fünf", "fuenf"], "e": "Der obere Bereich umfasst fünf Zeilen."}, {"type": "choice", "q": "Welche Angabe ist eine Straßenanschrift?", "opts": ["Bergstraße 18", "Postfach 12 34", "info@firma.de"], "a": 0, "e": "Eine Straßenanschrift enthält Straße und Hausnummer."}], "bodytext": [{"type": "choice", "q": "Wie beginnt ein höflicher Geschäftsbrief?", "opts": ["Sehr geehrte Frau Huber,", "Hi Huber!", "Na, alles klar?"], "a": 0, "e": "Die formelle Anrede ist passend."}, {"type": "input", "q": "Welches Satzzeichen steht am Ende der Anrede „Sehr geehrte Frau Huber“?", "answers": ["komma", ","], "e": "Die Anrede endet mit einem Komma."}, {"type": "choice", "q": "Welche Formulierung passt in den Brieftext?", "opts": ["Bitte senden Sie uns ein Angebot zu.", "Schick mal schnell was!", "Hey, mach das!"], "a": 0, "e": "Geschäftsbriefe sind sachlich und höflich."}, {"type": "order", "q": "Ordne einen sachlichen Brieftext.", "items": ["Anlass nennen", "Informationen und Anliegen erläutern", "Bitte oder Abschluss formulieren"], "e": "Ein Text folgt einem klaren Aufbau."}, {"type": "input", "q": "Wie viele Leerzeilen stehen in eurer Vorlage nach der Anrede?", "answers": ["1", "eine", "eins"], "e": "Eine Leerzeile trennt Anrede und Text."}, {"type": "choice", "q": "Wie werden zwei Textabsätze in eurer Vorlage getrennt?", "opts": ["Durch eine Leerzeile", "Durch drei Leerzeilen", "Durch einen neuen Briefkopf"], "a": 0, "e": "Absätze werden durch eine Leerzeile getrennt."}, {"type": "choice", "q": "Was gehört nicht in einen sachlichen Brieftext?", "opts": ["Beleidigungen", "Klare Angaben", "Höfliche Bitte"], "a": 0, "e": "Der Ton soll höflich bleiben."}, {"type": "input", "q": "Wie heißt der eigentliche Inhalt des Schreibens?", "answers": ["brieftext", "text"], "e": "Das ist der Brieftext."}], "closing": [{"type": "choice", "q": "Welche Schlussformel passt?", "opts": ["Mit freundlichen Grüßen", "Bis bald, Leute!", "Ciao!"], "a": 0, "e": "Das ist eine übliche formelle Grußformel."}, {"type": "input", "q": "Wofür steht „i. A.“?", "answers": ["im auftrag"], "e": "i. A. bedeutet im Auftrag."}, {"type": "choice", "q": "Was bedeutet „i. V.“?", "opts": ["in Vertretung", "im Verkauf", "in Vorbereitung"], "a": 0, "e": "i. V. bedeutet in Vertretung."}, {"type": "input", "q": "Welche Abkürzung steht für Prokura?", "answers": ["ppa", "ppa."], "e": "ppa. bedeutet per procura."}, {"type": "order", "q": "Ordne die Elemente des Briefschlusses.", "items": ["Grußformel", "Firmenname (falls vorhanden)", "Unterschrift", "Gedruckter Name / Funktion", "Anlagenvermerk (falls vorhanden)"], "e": "Das ist die Reihenfolge des Briefschlusses."}, {"type": "choice", "q": "Was bedeutet „Anlagen“?", "opts": ["Mehrere beigefügte Dokumente", "Mehrere Empfänger", "Mehrere Unterschriften"], "a": 0, "e": "Anlagen sind beigefügte Dokumente."}, {"type": "choice", "q": "Was nennt der Verteiler?", "opts": ["Weitere Empfänger des Schreibens", "Die Postleitzahl", "Den Brieftext"], "a": 0, "e": "Der Verteiler nennt weitere Empfänger."}, {"type": "input", "q": "Wie viele Leerzeilen stehen in eurer Vorlage vor der Grußformel?", "answers": ["1", "eine", "eins"], "e": "Vor der Grußformel steht eine Leerzeile."}, {"type": "choice", "q": "Was ist neben dem gedruckten Namen für einen unterschriebenen Brief wichtig?", "opts": ["Die handschriftliche Unterschrift", "Ein zweiter Betreff", "Die private Telefonnummer"], "a": 0, "e": "Die Unterschrift ist ein eigener Bestandteil."}]};
+const topicNames = {"general": "📘 Geschäftsbrief allgemein", "info": "🔎 Infoblock", "sender": "🏢 Absender", "address": "✉️ Adressfeld", "bodytext": "📝 Brieftext", "closing": "🤝 Schlussformel"};
+function startTopic(k){start(k==='info'?info:topicSets[k],topicNames[k]);}
+
+let qs=[],i=0,tries=0,activeMode='classic',orderState=[],answered=false,orderMistakes=0;
 
 function saveProgress(){
   if(!qs || !qs.length) return;
@@ -121,10 +217,11 @@ function loadProgress(title){
 function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function home(){show('home')}
 function startInfo(){start(info,"🕵️ Mission Infoblock")}
+function startMixed(){start(mixed,"🏆 Geschäftsbrief-Challenge")}
 function startPixel(){start(pixel,"🚀 PIXELWERK × KRS")}
 function startDIN(){start(din,"📄 Geschäftsbrief & DIN")}
 function start(arr,title){
- qs=arr;document.getElementById('title').textContent=title;
+ qs=arr;activeMode='mixed';document.getElementById('title').textContent=title;
  const saved=loadProgress(title);
  if(saved && saved.i>0 && saved.i<arr.length){
    if(confirm('Du hast diese Übung schon begonnen. Möchtest du an Aufgabe '+(saved.i+1)+' weitermachen?')){
@@ -136,19 +233,162 @@ function start(arr,title){
  show('quiz');render()
 }
 function render(){
+ answered=false;orderMistakes=0;
  const x=qs[i];document.getElementById('bar').style.width=(i/qs.length*100)+'%';
  document.getElementById('counter').textContent='Aufgabe '+(i+1)+' von '+qs.length;
- let b='<h2>'+x.q+'</h2><div id="opts"></div><div id="feedback"></div><button id="next">Weiter →</button><div class="note">Du kommst erst weiter, wenn du die richtige Antwort gefunden hast.</div>';
- document.getElementById('qbox').innerHTML=b;
+ document.getElementById('qbox').innerHTML='<h2>'+x.q+'</h2><div id="opts"></div><div id="feedback" aria-live="polite"></div><button id="next">Weiter →</button><div class="note" id="taskNote">Du kommst erst weiter, wenn du die richtige Antwort gefunden hast.</div>';
  const o=document.getElementById('opts');
- x.opts.forEach((t,j)=>{let z=document.createElement('button');z.className='opt';z.textContent=t;z.onclick=()=>check(j,z);o.appendChild(z)})
+ if(x.type==='order'){
+   if(document.getElementById('title').textContent.includes('Geschäftsbrief-Challenge'))document.getElementById('taskNote').textContent='Bei Sortieraufgaben erhältst du nach dem ersten Fehler einen Hinweis. Nach vier Fehlversuchen siehst du die Lösung und kannst weitergehen.';
+   orderState=x.items.map((v,k)=>({v:v,k:k}));
+   for(let j=orderState.length-1;j>0;j--){let r=Math.floor(Math.random()*(j+1));[orderState[j],orderState[r]]=[orderState[r],orderState[j]];}
+   if(orderState.every((v,j)=>v.k===j)&&orderState.length>1)[orderState[0],orderState[1]]=[orderState[1],orderState[0]];
+   drawOrder();
+ }else if(x.type==='input'){
+   o.innerHTML='<input id="answer" class="answer-input" autocomplete="off" placeholder="Antwort eingeben"><button id="submitAnswer" class="action">Prüfen ✓</button>';
+   document.getElementById('submitAnswer').onclick=checkInput;
+   document.getElementById('answer').onkeydown=e=>{if(e.key==='Enter')checkInput()};
+ }else{
+   let options=x.opts.map((t,j)=>({t,j}));
+   for(let j=options.length-1;j>0;j--){let r=Math.floor(Math.random()*(j+1));[options[j],options[r]]=[options[r],options[j]];}
+   options.forEach(v=>{let z=document.createElement('button');z.className='opt';z.textContent=v.t;z.onclick=()=>check(v.j,z);o.appendChild(z)});
+ }
+}
+function success(message){answered=true;document.getElementById('feedback').innerHTML='✅ Richtig! <span style="font-weight:normal">'+message+'</span>';const n=document.getElementById('next');n.style.display='inline-block';n.onclick=next;}
+function checkInput(){if(answered)return;const x=qs[i],v=document.getElementById('answer').value.trim().toLowerCase().replace(/\s+/g,' ');if(x.answers.some(a=>a.toLowerCase()===v)){document.getElementById('answer').disabled=true;document.getElementById('submitAnswer').disabled=true;success(x.e)}else{tries++;document.getElementById('feedback').textContent='❌ Noch nicht richtig. Versuche es erneut.'}}
+function drawOrder(){
+ const o=document.getElementById('opts');
+ o.innerHTML='<div class="order-list">'+orderState.map((v,j)=>'<div class="order-row"><strong>'+(j+1)+'.</strong><span>'+v.v+'</span><button data-dir="-1" data-pos="'+j+'" aria-label="Nach oben">↑</button><button data-dir="1" data-pos="'+j+'" aria-label="Nach unten">↓</button></div>').join('')+'</div><button class="action" id="checkOrder">Reihenfolge prüfen</button>';
+ o.querySelectorAll('[data-pos]').forEach(b=>b.onclick=()=>{const a=Number(b.dataset.pos),c=a+Number(b.dataset.dir);if(c<0||c>=orderState.length)return;[orderState[a],orderState[c]]=[orderState[c],orderState[a]];drawOrder()});
+ document.getElementById('checkOrder').onclick=()=>{
+  if(answered)return;
+  if(orderState.every((v,j)=>v.k===j)){
+   o.querySelectorAll('button').forEach(b=>b.disabled=true);
+   success(qs[i].e);
+  }else{
+   tries++;orderMistakes++;
+   const f=document.getElementById('feedback');
+   const inChallenge=document.getElementById('title').textContent.includes('Geschäftsbrief-Challenge');
+   if(inChallenge && orderMistakes>=4){
+    orderState.sort((a,b)=>a.k-b.k);
+    drawOrder();
+    document.querySelectorAll('#opts button').forEach(b=>b.disabled=true);
+    answered=true;
+    f.innerHTML='💡 <strong>Nach 4 Versuchen zeigen wir dir die richtige Reihenfolge.</strong> Schau sie dir an und gehe dann weiter. <span style="font-weight:normal">'+qs[i].e+'</span>';
+    const n=document.getElementById('next');n.style.display='inline-block';n.onclick=next;
+   }else if(inChallenge){
+    const hint=orderMistakes===1 ? '💡 <strong>Hinweis:</strong> Überlege, welche Angaben ganz oben im Brief stehen und welche erst nach dem eigentlichen Text folgen.' : '💡 <strong>Tipp:</strong> Prüfe die Reihenfolge von oben nach unten. ('+orderMistakes+' von 4 Fehlversuchen)';
+    f.innerHTML=hint;
+   }else{
+    f.textContent='❌ Noch nicht ganz. Verschiebe die Bausteine mit den Pfeilen.';
+   }
+  }
+ };
 }
 function check(j,b){
+ if(answered)return;
  const x=qs[i],f=document.getElementById('feedback');
- if(j===x.a){b.classList.add('correct');document.querySelectorAll('.opt').forEach(z=>z.disabled=true);f.innerHTML='✅ Richtig! <span style="font-weight:normal">'+x.e+'</span>';let n=document.getElementById('next');n.style.display='inline-block';n.onclick=next}
+ if(j===x.a){b.classList.add('correct');document.querySelectorAll('.opt').forEach(z=>z.disabled=true);success(x.e)}
  else{tries++;b.classList.add('wrong');f.textContent='❌ Noch nicht. Überlege noch einmal.';setTimeout(()=>b.classList.remove('wrong'),600)}
 }
 function next(){i++;saveProgress();if(i<qs.length)render();else finish()}
 function finish(){localStorage.removeItem(progressKey(document.getElementById('title').textContent));document.getElementById('bar').style.width='100%';document.getElementById('counter').textContent='Geschafft!';document.getElementById('qbox').innerHTML='<div style="text-align:center;padding:28px;font-size:22px">🎉 <b>Training geschafft!</b><br><br>Alle '+qs.length+' Aufgaben gelöst.<br><span class="note">Falsche Versuche: '+tries+'</span><br><br><button class="back" onclick="show(&quot;business&quot;)">Zurück zu Geschäftsbrief</button></div>'}
+
+
+const scenarios=[
+['Bergblick Möbel GmbH','Musterstraße 8','85072','Eichstätt','Schulbedarf Huber GmbH','Jana Huber','Bahnhofstraße 12','85049','Ingolstadt','hu/ek','10.11.2026','be/ma','19.11.2026','Max Bauer','Angebot','10','Schreibtische','Preisliste'],
+['Altmühl Sport GmbH','Sportweg 4','85072','Eichstätt','Fit & Aktiv GmbH','Petra König','Hauptstraße 18','92339','Beilngries','ko/ts','04.11.2026','as/mu','20.11.2026','Lena Müller','Angebot','12','Sporttaschen','Preisliste'],
+['Donau Bürobedarf GmbH','Bürostraße 7','85049','Ingolstadt','Lernraum GmbH','Thomas Weber','Schulweg 21','85072','Eichstätt','we/ab','06.11.2026','db/sk','21.11.2026','Sarah Keller','Angebot','20','Ordner','Katalog'],
+['Naturholz Werkstatt GmbH','Waldstraße 3','92339','Beilngries','Kinderwelt GmbH','Sabine Fischer','Ringstraße 9','85049','Ingolstadt','fi/bu','09.11.2026','nw/hl','23.11.2026','Hannes Lang','Angebot','8','Regale','Preisliste'],
+['Papierstern GmbH','Marktplatz 6','85072','Eichstätt','Büro König GmbH','Michael Brandt','Gartenstraße 11','92339','Beilngries','br/mb','11.11.2026','ps/ja','24.11.2026','Julia Auer','Angebot','50','Notizbücher','Produktblatt'],
+['TechnikPlus GmbH','Industriestraße 15','85049','Ingolstadt','Schultechnik GmbH','Anna Meier','Lindenstraße 2','85072','Eichstätt','me/sa','12.11.2026','tp/rf','25.11.2026','Robert Frank','Angebot','6','Monitore','Preisliste'],
+['Altmühl Druck GmbH','Druckergasse 5','85072','Eichstätt','Eventservice GmbH','Karin Wolf','Parkstraße 14','85049','Ingolstadt','wo/ek','13.11.2026','ad/mh','26.11.2026','Martin Huber','Angebot','200','Flyer','Musterblatt'],
+['Bayern Licht GmbH','Sonnenweg 8','92339','Beilngries','Raumdesign GmbH','Eva Schmid','Bahnhofstraße 20','85049','Ingolstadt','sc/rd','14.11.2026','bl/te','27.11.2026','Tobias Ernst','Angebot','15','Lampen','Katalog'],
+['BüroFit GmbH','Am Anger 10','85072','Eichstätt','Lerninsel GmbH','Claudia Bauer','Bergstraße 3','92339','Beilngries','ba/li','16.11.2026','bf/pk','30.11.2026','Paul Kern','Angebot','9','Bürostühle','Preisliste'],
+['Radlwerk GmbH','Talstraße 12','92339','Beilngries','Freizeit Aktiv GmbH','Nina Lorenz','Fliederweg 6','85072','Eichstätt','lo/fa','17.11.2026','rw/fm','01.12.2026','Felix Maier','Angebot','5','Fahrräder','Produktblatt'],
+['Schulmedien GmbH','Am Stadtpark 4','85049','Ingolstadt','Campus GmbH','Stefan Richter','Römerstraße 17','85072','Eichstätt','ri/cm','18.11.2026','sm/lb','02.12.2026','Lisa Beck','Angebot','4','Beamer','Katalog'],
+['Möbelpunkt GmbH','Eichenweg 9','85072','Eichstätt','Büroservice GmbH','Daniela Seitz','Donaustraße 25','85049','Ingolstadt','se/bs','19.11.2026','mp/nh','03.12.2026','Nora Hoffmann','Angebot','7','Schränke','Preisliste']
+];
+const names=['sender','recipient','yourref','yourdate','ourref','ourdate','date','subject','salutation','body','greeting','signature','attachment'];
+const labels=['🏢 Absender','✉️ Empfänger / Adressfeld','🔎 Ihr Zeichen','📅 Ihre Nachricht vom','🔎 Unser Zeichen','📅 Unsere Nachricht vom','📅 Datum des Briefs','📌 Betreff','👋 Anrede','📝 Brieftext','🤝 Grußformel','🖊️ Briefschluss: Firma, Name und Funktion','📎 Anlagenvermerk'];
+const placeholders=['Firma\nStraße und Hausnummer\nPLZ Ort','Firma\nAnsprechpartnerin/Ansprechpartner\nStraße und Hausnummer\nPLZ Ort','z. B. ab/cd','TT.MM.JJJJ','z. B. ab/cd','Falls vorhanden','TT.MM.JJJJ','Kurze, aussagekräftige Betreffzeile','Sehr geehrte ...','Schreibe einen höflichen Brieftext mit mehreren Sätzen.','Mit ...','Firma\n[Platz für Unterschrift]\ni. A. Vorname Nachname\nFunktion','Anlage\n1 ...'];
+let scenarioIndex=Number(localStorage.getItem('krs_letter_scenario')||'0')%scenarios.length;
+function sc(){return scenarios[scenarioIndex]}
+function norm(s){return s.toLocaleLowerCase('de-DE').replace(/\s+/g,' ').trim()}
+function has(v,s){return norm(v).includes(norm(s))}
+function dateMatch(v,s){return v.trim()===s||v.trim()===s.split('.').reverse().join('-')}
+function currentTask(t,v){
+ const a=sc(),item=a[16].toLowerCase(),count=a[15],person=a[5].split(' ').slice(-1)[0];
+ switch(t){
+ case 'sender':return [a[0],a[1],a[2],a[3]].every(x=>has(v,x));
+ case 'recipient':return [a[4],a[5],a[6],a[7],a[8]].every(x=>has(v,x));
+ case 'yourref':return norm(v)===norm(a[9]);
+ case 'yourdate':return dateMatch(v,a[10]);
+ case 'ourref':return norm(v)===norm(a[11]);
+ case 'ourdate':return !v.trim()||v.trim()==='–'||v.trim()==='-';
+ case 'date':return dateMatch(v,a[12]);
+ case 'subject':return /angebot/i.test(v)&&norm(v).includes(item);
+ case 'salutation':return /sehr\s+geehrte[nr]?\s+(frau|herrn?)\s+/i.test(v)&&has(v,person)&&v.trim().endsWith(',');
+ case 'body':return v.trim().length>=85&&/dank/i.test(v)&&has(v,count)&&has(v,item)&&has(v,a[17]);
+ case 'greeting':return /mit\s+freundlichen\s+grüßen/i.test(v);
+ case 'signature':return has(v,a[0])&&has(v,a[13])&&/i\.\s*a\./i.test(v);
+ case 'attachment':return /anlage/i.test(v)&&has(v,a[17]);
+ }
+ return false;
+}
+function taskHint(t){
+ const a=sc();return ({
+ sender:'Prüfe Firmenname, Straße/Hausnummer, PLZ und Ort.',
+ recipient:'Prüfe die vollständige Empfängeranschrift und den Namen der Kontaktperson.',
+ yourref:'Übernimm das Zeichen aus der Anfrage des Empfängers.',
+ yourdate:'Hier steht das Datum der Anfrage, nicht das Datum deiner Antwort.',
+ ourref:'Nutze das Zeichen des aktuellen Absenders.',
+ ourdate:'Es gibt keine frühere eigene Nachricht. Das Feld bleibt leer.',
+ date:'Trage das Datum ein, an dem du antwortest.',
+ subject:'Nenne das Angebot und die angefragte Ware.',
+ salutation:'Verwende „Sehr geehrte Frau ...,“ bzw. „Sehr geehrter Herr ...,“.',
+ body:`Bedanke dich, biete ${a[15]} ${a[16]} an und erwähne die Anlage „${a[17]}“. Schreibe mehrere vollständige Sätze.`,
+ greeting:'Wähle eine formelle Grußformel.',
+ signature:'Nenne die Absenderfirma und den zuständigen Mitarbeiter mit „i. A.“.',
+ attachment:`Nenne den Anlagenvermerk und die Anlage „${a[17]}“.`
+ })[t];
+}
+function showLetterExercise(){
+ show('letterExercise');
+ const a=sc();
+ document.getElementById('letterScenario').textContent=`Beispiel ${scenarioIndex+1} von ${scenarios.length}`;
+ document.getElementById('letterAssignment').textContent=`Du arbeitest bei der ${a[0]}, ${a[1]}, ${a[2]} ${a[3]}. Deine Kontaktperson ist ${a[5]} bei der ${a[4]}, ${a[6]}, ${a[7]} ${a[8]}. Am ${a[10]} wurde ein Angebot für ${a[15]} ${a[16]} angefragt (Ihr Zeichen: ${a[9]}). Du antwortest am ${a[12]} (Unser Zeichen: ${a[11]}). Dein Ansprechpartner im eigenen Unternehmen ist ${a[13]}. Bedanke dich, biete die Ware an und verweise auf die beigefügte Anlage „${a[17]}“. Es gibt keine frühere eigene Nachricht.`;
+ const target=document.getElementById('letterFields');target.innerHTML='';
+ names.forEach((id,j)=>{
+  const wrap=document.createElement('div');wrap.className='letter-field';wrap.id='wrap_'+id;
+  const label=document.createElement('label');label.htmlFor='letter_'+id;label.textContent=labels[j];wrap.appendChild(label);
+  const inp=document.createElement([0,1,9,11,12].includes(j)?'textarea':'input');inp.id='letter_'+id;inp.placeholder=placeholders[j];
+  if(inp.tagName==='TEXTAREA')inp.rows= j===9?6:j===1||j===11?4:3;
+  inp.value=localStorage.getItem('krs_letter_'+scenarioIndex+'_'+id)||'';
+  inp.addEventListener('input',()=>{localStorage.setItem('krs_letter_'+scenarioIndex+'_'+id,inp.value);wrap.classList.remove('good','bad');document.getElementById('letterResult').textContent='';document.getElementById('fb_'+id).textContent=''});
+  wrap.appendChild(inp);const fb=document.createElement('div');fb.className='field-feedback';fb.id='fb_'+id;wrap.appendChild(fb);target.appendChild(wrap);
+ });
+ document.getElementById('letterResult').textContent='';
+}
+function checkLetter(){
+ let correct=0;
+ names.forEach(id=>{
+  const v=document.getElementById('letter_'+id).value;
+  const ok=currentTask(id,v);if(ok)correct++;
+  const w=document.getElementById('wrap_'+id);w.classList.toggle('good',ok);w.classList.toggle('bad',!ok);
+  document.getElementById('fb_'+id).textContent=ok?'✅ Pflichtangaben erkannt.':'💡 '+taskHint(id);
+ });
+ document.getElementById('letterResult').textContent=`${correct} von ${names.length} Bereichen erfüllen die automatischen Prüfkriterien. ${correct===names.length?'🎉 Alle Pflichtangaben erkannt! Prüfe jetzt noch die Leerzeilen und die sprachliche Gestaltung.':'Verbessere die orange markierten Bereiche und prüfe erneut.'}`;
+}
+function resetLetter(){
+ if(!confirm('Ein neues Beispiel laden? Deine Eingaben für das bisherige Beispiel bleiben gespeichert.'))return;
+ const old=scenarioIndex;
+ scenarioIndex=(scenarioIndex+1)%scenarios.length;
+ localStorage.setItem('krs_letter_scenario',String(scenarioIndex));
+ // On returning to a scenario, begin it as a fresh task.
+ names.forEach(id=>localStorage.removeItem('krs_letter_'+scenarioIndex+'_'+id));
+ showLetterExercise();
+}
+
 </script>
 </body></html>
